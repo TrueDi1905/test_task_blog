@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div>
+    <a href="{% url 'posts:follow' author.username %}">
+        нажмите чтобы подписаться на - {{ author.username }} </a>
+    </div>
+<div>
+    <a href="{% url 'posts:unfollow' author.username %}">
+        нажмите чтобы отпписаться от - {{ author.username }} </a>
+    </div>
+    {% for post in page %}
+    <div>
+        <p> Заголовок - {{ post.heading }}</p>
+        <p> {{ post.text}}</p>
+        <p> {{ post.pub_date }}</p>
+    </div>>
+    {% endfor %}
+    {% include "paginator.html" %}
+</body>
+</html>

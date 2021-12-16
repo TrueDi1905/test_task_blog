@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div>
+  <a href="{% url 'posts:new_post' %}"> Новая запись </a>
+</div>
+    {% for post in page %}
+    <div>
+        <p> Заголовок - {{ post.heading }}</p>
+        <p> {{ post.text}}</p>
+        <p> {{ post.author}}</p>
+        <p> {{ post.pub_date }}</p>
+        <a href="{% url 'posts:read' post.author.id %}">
+            нажмите чтобы отметить как прочитанный {{ read }}
+        </a>
+
+    </div>>
+    {% endfor %}
+    подпишитесь на кого-нибудь, чтоы видеть их посты
+    {% for user in users %}
+    <div>
+    <a href="{% url 'posts:blog' user.username %}"> {{ user.username }}
+    </a>
+        </div>
+    {% endfor %}
+    {% include "paginator.html" %}
+</body>
+</html>
